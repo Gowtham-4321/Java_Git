@@ -1,12 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Java Full Stack Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+ 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #0a0a0f, #000);
+      color: #e0e0ff;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #80aaff;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    /* ---------- Glass Effect ---------- */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 25px rgba(0, 153, 255, 0.2);
+      border-radius: 15px;
+    }
+
+    /* ---------- Navbar ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav h2 {
+      font-size: 1.5rem;
+      background: linear-gradient(90deg, #00f0ff, #6b00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: #b0b0ff;
+      font-weight: 500;
+      transition: color 0.3s;
+      text-decoration-line: none;
+    }
+
+    nav ul li a:hover {
+      color: #00f0ff;
+    }
+
+    
+
+
+  header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* --- TEXT ANIMATION --- */
+  .header-content {
+    animation: fadeUp 1.5s ease-in-out;
+  }
+
+  .header-content p{
+       margin: auto;
+       text-align: center;
+      /* font-size:40px ; */
+       width:105%;
+       background: linear-gradient(90deg,  #6b00ff, #48858a);
+       transition: transform 0.3s, box-shadow 0.3s;
+       padding: 12px 20px;
+       border: none;
+       font-weight: 400;
+       border-radius: 50px;
+        }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- TEXT STYLING --- */
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  header h1 span {
+    color: #00fff0;
+  }
+
+  header p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+  }
+
+  
+
+  .btn {
+      padding: 12px 28px;
+      background: linear-gradient(90deg, #00f0ff, #6b00ff);
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration-line: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px #6b00ff;
+    } 
+
+    /* ---------- About ---------- */
+    #about {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    #about img {
+      width: 245px;
+      height: 240px;
+      border-radius: 50%;
+      border: 3px solid #6b00ff;
+      box-shadow: 0 0 30px #6b00ff33;
+    }
+
+    #about .content {
+      flex: 1;
+      min-width: 280px;
+      padding: 25px;
+    }
+
+    #about p {
+      line-height: 1.7;
+      color: #cfcfff;
+    }
+
+    /* ---------- Skills ---------- */
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+    }
+
+    .skill {
+      text-align: center;
+      padding: 25px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      color: #fff;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #6b00ff;
+    }
+
+    /* ---------- Projects ---------- */
+    #projects .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .project {
+      overflow: hidden;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.4s;
+      color: #d0d0ff;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px #00f0ff55;
+    }
+
+    .project img {
+      border-radius: 10px;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    
+
+    .animated-text {
+    font-size: 3.5rem;
+    color: transparent;
+    background-image: linear-gradient(90deg, #00fff0, #8400ff, #00fff0);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textGradientMove 4s ease-in-out infinite, fadeUp 1.5s ease-out;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  /* Gradient text animation */
+  @keyframes textGradientMove {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
+  }
+
+  /* Fade-up entry animation */
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animated-text span {
+    color: transparent;
+    background-image: linear-gradient(90deg, #00c3ff, #ffff1c, #00c3ff);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: textGradientMove 5s ease-in-out infinite;
+    font-weight: 700;
+  }
+
+
+
+  @keyframes glowMove {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+  }
+
+    /* ---------- Contact ---------- */
+    form {
+      max-width: 600px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #e0e0ff;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 12px;
+      background: linear-gradient(90deg, #00f0ff, #6b00ff);
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px #6b00ff;
+    }
+
+    #contact {
+    text-align: center;
+    padding: 40px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #contact h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #80aaff;
+  }
+
+  #contact p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    /* box-shadow: 0 8px 16px rgba(0,0,0,0.15); */
+     box-shadow: 0 0 25px #6b00ff;
+  }
+
+  
+
+  .contact-card i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #0077b5; /* LinkedIn color */
+  }
+
+  .contact-card:nth-child(2) i {
+    color: #333; /* GitHub color */
+  }
+
+  .contact-card:nth-child(3) i {
+    color: #d44638; /* Gmail color */
+  }
+
+  .contact-card span {
+    font-weight: 500;
+  }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #a0a0ff;
+      background: #06060d;
+    }
+
+    /* ---------- Animations ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .project-card {
+    width: 350px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.project-card h3 {
+    margin: 15px 0 10px;
+}
+
+.project-card p {
+    color: #555;
+    line-height: 1.5;
+}
+
+.project-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.project-btn:hover {
+    background: #0056b3;
+}
+  </style>
 </head>
 <body>
-    <h1>Github Class Batch</h1>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>PORTFOLIO <span style="color:#6b00ff;"></span></h2>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+     <div class="header-content">
+    <h1  class="animated-text">Hi, I'm GOUTHAM</h1>
+    <p>Java Full Stack Development | Spring Boot | MySQL</p><br><br>
+    <a href="#projects" class="btn">View My Work</a>
+     </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="glass reveal">
+    <img src="C:\Users\Gokulnath\Downloads\Gouthamgoat.img1.png" alt="Profile" />
+    <div class="content">
+      <h2>About Me</h2>
+      <p>
+        I'm a passionate Java Full Stack Development focused on building performant, scalable web applications.
+        My stack includes Java, Spring Boot, React, and REST APIs. I love clean design, efficient code, and solving complex problems
+        with modern technology.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="glass reveal">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+       <div class="skill glass">HTML / CSS</div>
+       <div class="skill glass">Javascript</div>
+      <div class="skill glass">Bootstrap</div>
+      <div class="skill glass">Java</div>
+      <div class="skill glass">JSP/Servlets</div>
+      <div class="skill glass">Spring Boot</div>
+      <div class="skill glass">Hibernate</div>
+      <div class="skill glass">MySQL</div>
+      <div class="skill glass">REST APIs</div>
+      <div class="skill glass">Git / GitHub</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="glass reveal">
+    <h2>Featured Projects</h2>
+
+    <div class="projects-grid">
+
+      <div class="project glass">
+      <img src="https://media.licdn.com/dms/image/v2/D4D12AQFqQCxoQVFeZg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1711534827763?e=2147483647&v=beta&t=N5qe9k3YaButtGOX49Wbk6sdICkp0BrqkxWCiXdjRCY" alt="Project 1" >
+      <h3>Smart Car Inventory</h3>
+      <p>Java + Spring Boot / Smart Car Inventory — a Spring Boot Java project for efficient car management, tracking, and inventory control.</p>
+      <a href="file:///D:/VS%20work%20files/SAMPLE%20PROJ.CARSmart/cars2.html" target="_blank" class="project-btn">View Project</a>
+      </div>
+
+      <div class="project glass">
+        <img src="https://media.istockphoto.com/id/488404424/vector/travel-and-tourism-with-famous-world-landmarks.jpg?s=612x612&w=0&k=20&c=1QAbofbRgHfJ8I4bb3VsVp3A-YuS4ZofcdjmaCY3ihw=" alt="Project 2">
+        <h3>Tourism World</h3>
+        <p>Tourism Website — a Java JSP/Servlets project for exploring destinations, booking tours, and managing travel information .</p>
+        <a href="file:///D:/Eclipse%20wps/JSP(JAVA)-Project-TOURISM(using%20FRONTEND%20&%20BACKEND)/Tours.html" target="_blank" class="project-btn">View Project</a>
+      </div>
+
+     <div class="project glass">
+    <img src="https://images.stockcake.com/public/0/7/8/0787eb45-d53f-407c-b377-dbb6ac52f239_large/digital-shopping-evolution-stockcake.jpg" alt="E-Commerce Shopping Project"></a>
+    <h3>E-Commerce Shopping</h3>
+    <p>An E-commerce Shopping Website developed using HTML, CSS, and JavaScript,providing a simple, attractive, and responsive shopping experience.</p>
+    <a href="file:///D:/VS%20work%20files/SAMPLE%20PROJ.E-COMMERShop/Ehome.html" target="_blank" class="project-btn">View Project</a>
+     </div>
+    </div>
+  </section>
+
+<section id="contact" class="glass reveal">
+  <h2>Contact Me</h2>
+  <p>Let’s connect! Feel free to reach out through any of the platforms below.</p>
+  
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/goutham-a-84b4b4326" target="_blank" class="contact-card">
+      <i class="fab fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
     
+    <a href="https://github.com/Gowtham-4321/Java_Git" target="_blank" class="contact-card">
+      <i class="fab fa-github" style="color:white;"></i>
+      <span>GitHub</span>
+    </a>
+    
+    <a href="mailto:gowthama051998@gmail.com" class="contact-card">
+      <i class="fas fa-envelope"></i>
+      <span>Gmail</span>
+    </a>
+  </div>
+</section>
+
+<!-- FONT AWESOME ICONS -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <footer>
+    © 2025 A GOUTHAM | Java Full Stack Developer
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    window.addEventListener("scroll", () => {
+      reveals.forEach((el) => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    });
+
+    // Contact alert
+    function sendMessage(e) {
+      e.preventDefault();
+      alert("Thank you! Your message has been sent successfully.");
+      e.target.reset();
+    }
+
+    function showProject() {
+    document.getElementById("project").style.display = "block";
+}
+  </script>
 </body>
 </html>
+
